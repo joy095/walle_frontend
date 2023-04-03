@@ -45,12 +45,6 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
-  console.log(import.meta.env.VITE_REACT_BACKEND_URL);
-
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
