@@ -24,12 +24,15 @@ const CreatePost = () => {
     const randomPrompt = getRandomPrompt(form.prompt);
     setForm({ ...form, prompt: randomPrompt });
   };
+  const BASE_URL =
+    import.meta.env.VITE_REACT_BASE_URL || "http://localhost:4000";
+  console.log(BASE_URL);
 
   const generateImage = async () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch("http://localhost:4000/api/v1/dalle", {
+        const response = await fetch(`${BASE_URL}/api/v1/dalle`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +60,7 @@ const CreatePost = () => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch("http://localhost:4000/api/v1/post", {
+        const response = await fetch(`${BASE_URL}/api/v1/post`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

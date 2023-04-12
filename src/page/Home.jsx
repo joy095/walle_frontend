@@ -20,11 +20,15 @@ const Home = () => {
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState(null);
 
+  const BASE_URL =
+    import.meta.env.VITE_REACT_BASE_URL || "http://localhost:4000";
+  console.log(BASE_URL);
+
   const fetchPosts = async () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:4000/api/v1/post", {
+      const response = await fetch(`${BASE_URL}/api/v1/post`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
