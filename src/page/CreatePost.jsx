@@ -36,6 +36,7 @@ const CreatePost = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "true",
           },
           body: JSON.stringify({
             prompt: form.prompt,
